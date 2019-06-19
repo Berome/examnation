@@ -120,72 +120,83 @@
 <h1>练习题</h1>
 <h2>一、名词解释</h2>
 <p>
-	1、 大数据概念
-	2、 云数据库概念
-	3、 图计算
-	4、 ACID持性 
+	1、 大数据概念<br>
+	大数据（big data），指无法在一定时间范围内用常规软件工具进行捕捉、管理和处理的数据集合，是需要新处理模式才能具有更强的决策力、洞察发现力和流程优化能力的海量、高增长率和多样化的信息资产。<br>
+
+	2、 云数据库概念<br>
+	云数据库是指被优化或部署到一个虚拟计算环境中的数据库，可以实现按需付费、按需扩展、高可用性以及存储整合等优势。根据数据库类型一般分为关系型数据库和非关系型数据库（NoSQL数据库)
+<br>
+
+	3、 图计算<br>
+	“图计算”是以“图论”为基础的对现实世界的一种“图”结构的抽象表达，以及在这种数据结构上的计算模式。
+
+<br>
+
+	4、 ACID持性 <br>
+	ACID是Atomic（原子性）、Consistency（一致性）、Isolation（隔离性）和Durability（持久性）的英文缩写。<br>
 </p>
 <h2>二、判断题</h2>
 <p>
-	1、 大数据时代带来的思维方式的转变有：全样而非抽样、效率而非准确、相关而非因果.（）<br>
-	2 、Hadoop是 Apache软件基金会下的一个开源分布式计算平台 ， 为用户提供了系统底层细节透明的分布式基础架构（ ）<br>
-	3 、Hadoop的 该 心 包 括 HDFS和 MapReduce.( )<br>
-	4、 HadoopMapReduce的计算模式是基于图结构的计算模式（)<br>
-	5 、Storm是 一 个开源的图计算框架  （  ） <br>
-	6、Hadoop中的ZooKeeper组件是一个髙效而可靠的分布式协同工作系统( )<br>
-	7、HBase是一个高可靠性、高性能、可伸缩、实时读写、分布式列式数据库。（）<br>
-	8、HDFS中对文件逬行了分块存储，用户可以设定分块的大小，一般默认大小为64MB ( )<br>
-	9、 Hadoop在安装时的运行模式，可以单机模式、伪分布模式和完全分布模式  ( )<br>
-	10、HDFS采用了主从（Master/Slave) 结 构 模 型 .一 个HDFS集群包括一个名称节点（NameNode) 和 若干个数据节点（DataNode)()<br>
-	11、针 对Hadoopl.0中单一名称节点 ，存在单点失效问题 .Hadoop2 .0 设计 了HDFSHA, 提供名称节点热备份  （ ）<br>
-	12. NoSQL数据库有传统关系型数据库所不具有的灵活的水平扩展性，可以支持海量数据存储，所以可以完全替代关系型数据库。 ()<br>
-	13、MapReduce的设计理念就是“计算向数据靠拢"，而不是“数据向计算靠拢"，即移动计算比移动数据更经济。( )<br>
-	14、MapReduce计 算模型采用了Master (JobTracker) -Slave(TaskTracker)的结构。()<br>
-	15、 Topology 是Strom中对Spouts和Bolts组成网络的抽象，它可以被提交到Storm集群中执行。()<br>
-	16、Pregel是一种基于BSP模型实现的并行图计算处理系统。()<br>
-	17.数据的可视化是指将大型数据集中的数据以图形图像形式表示，并利用数据分析和开发工具发现其中 未知信息的处理过程()<br>
-	18、HBASE中张表的数据可能存放在多合计算机中的。()<br>
-	19、在Map Reduce计算框架中，在Map阶段和Reduce阶段之间有个Shuffle过程。（）<br>
-	20. Storm和Hadoop类似，也是采用了“Master-Worker”的节点运行方式。（）<br>
+	1、 大数据时代带来的思维方式的转变有：全样而非抽样、效率而非准确、相关而非因果.   （对）<br>
+	2 、Hadoop是 Apache软件基金会下的一个开源分布式计算平台 ， 为用户提供了系统底层细节透明的分布式基础架构  （对）<br>
+	3 、Hadoop的核心包括 HDFS和 MapReduce.    (对)<br>
+	4、 HadoopMapReduce的计算模式是基于图结构的计算模式  （错)<br>
+	5 、Storm是一个开源的图计算框架  （错） <br>
+	6、Hadoop中的ZooKeeper组件是一个髙效而可靠的分布式协同工作系统     (对)<br>
+	7、HBase是一个高可靠性、高性能、可伸缩、实时读写、分布式的列式数据库。  （对）<br>
+	8、HDFS中对文件逬行了分块存储，用户可以设定分块的大小，一般默认大小为64MB   (对)<br>
+	9、 Hadoop在安装时的运行模式，可以单机模式、伪分布模式和完全分布模式    (错)<br>
+	10、HDFS采用了主从（Master/Slave) 结 构 模 型 .一 个HDFS集群包括一个名称节点（NameNode) 和 若干个数据节点（DataNode)   (对)<br>
+	11、针对Hadoopl.0中单一名称节点 ，存在单点失效问题 .Hadoop2.0 设计了HDFSHA, 提供名称节点热备份  （对）<br>
+	12. NoSQL数据库有传统关系型数据库所不具有的灵活的水平扩展性，可以支持海量数据存储，所以可以完全替代关系型数据库。    (错)<br>
+	13、MapReduce的设计理念就是“计算向数据靠拢"，而不是“数据向计算靠拢"，即移动计算比移动数据更经济。    (对)<br>
+	14、MapReduce计算模型采用了Master (JobTracker) -Slave(TaskTracker)的结构。     (对)<br>
+	15、 Topology 是Strom中对Spouts和Bolts组成网络的抽象，它可以被提交到Storm集群中执行。     (对)<br>
+	16、Pregel是一种基于BSP模型实现的并行图计算处理系统。    (对)<br> 
+	17.数据的可视化是指将大型数据集中的数据以图形图像形式表示，并利用数据分析和开发工具发现其中 未知信息的处理过程     (对)<br>
+	18、HBASE中张表的数据可能存放在多台计算机中的。      (错 )<br>
+	19、在Map Reduce计算框架中，在Map阶段和Reduce阶段之间有个Shuffle过程。      （对）<br>
+	20. Storm和Hadoop类似，也是采用了“Master-Worker”的节点运行方式。  （错）<br>
 	</p>
 <h2>三、单选题</h2>
 <p>
-	1、下列哪一项不属于Hadoop分 布式处理软件框架的特征().<br>
+	1、下列哪一项不属于Hadoop分布式处理软件框架的特征     (D).<br>
 	A)高可靠性。采用冗余数据存储方式，即使一个副本发生故障，其他副本也可以保证正常对外服务。<br>
 	B)高效性，采用分布式并行计算平台，能够高效处理PB级数据<br>
 	C)高扩展性可以很容易将集群扩展到数以干计的计算节点上<br>
 	D)完全适用于各种分布式计算应用场景。<br>
-	2、下列哪个Hadoop子项目是实现分布式文件系统的()<br>
+
+	2、下列哪个Hadoop子项目是实现分布式文件系统的     (B)<br>
 	A)MapReduce<br>
 	B) HDFS<br>
 	C) HBase<br>  
 	D) Zookeeper <br>
-	3、下列哪个NoSQL数据库属于键值类型的数据库()。<br>
+	3、下列哪个NoSQL数据库属于键值类型的数据库     (C)。<br>
 	A) Redis数据库<br>  
 	B) MongoDB<br>
 	C) HBase  <br>
 	D) Neo4J<br>
-	4、在Hadoop配置中，所有节点的HDFS路径是是通过fs .default.name项来配置的，请问它在哪个配置文件中设置的( )?<br>
+	4、在Hadoop配置中，所有节点的HDFS路径是是通过fs .default.name项来配置的，请问它在哪个配置文件中设置的   (A )?<br>
 	A) core-site .xml<br>
 	B) hdfs-site.xml<br>
 	C) mapred-site.xml  <br>
-	D) hadoop-env .sh<br>
-	5.在一个Hadoop集群中SecondanyNameNode的作用是什么?<br>
+	D) hadoop-env.sh<br>
+	5.在一个Hadoop集群中SecondanyNameNode的作用是什么?     （C）<br>
 	A)当主NameNode节点出现故障后，作为其备份服务器恢复分布式文件系统的元数据信息。<br>
 	B)处理DataNode节点出错恢复的。<br>
 	C)对整个Hadoop集群进行协同服务的。<br>
 	D)用于与用户之间的服务和通信，<br>
-	6、在HBase系统框架中，Region服务 器的作用是什么? ()<br>
+	6、在HBase系统框架中，Region服务器的作用是什么?    (A)<br>
 	A)负责所有表和Region服务的管理工作。<br>
 	B)服务维护分配给自己的Region,并响应用户的读写请求。<br>
 	C) 提供整个HBase集群内的协同服务的。<br>
 	D)进行数据的三级寻址服务的。<br>
-	7、在Storm框 架中，Stream Groupings的作用是什么? ()<br>
+	7、在Storm框 架中，Stream Groupings的作用是什么?    (A)<br>
 	A)定义每个Stream的源头。<br>
 	B)定义Streams的状态转换过程。<br>
 	C)用户告知Topology如何在两个组件间(如Spout和Bolt之 间或不通的Bolt之间)执行Tuple的传送。<br>
-	D)定义一个Tuple数据流序列的。
-	8、在MapReduce工作过程中，关于其中Shuffle过程的作用是什么? ( )<br>
+	D)定义一个Tuple数据流序列的。<br>
+	8、在MapReduce工作过程中，关于其中Shuffle过程的作用是什么?    (A)<br>
 	A)其作用是对Map阶段输出的结果进行分区、排序、合并等处理并交给Reduce的过程<br>
 	B)其作用是对输入Map阶段的数据的预处理。<br>
 	C)其作用是对Reduce阶段后结果进行排序作用。<br>
@@ -194,27 +205,27 @@
 </p>
 <h2>四、多选题</h2>
 <p>
-	1、 大数据具有典型的特征有().<br>
+	1、 大数据具有典型的特征有      (ABCD).<br>
 	A)数据量大(Volume)<br>
 	B)数据类型繁多（Variety）<br>
 	C)处理速度快(Velocity)<br>
 	D）价值密度低（Value）<br>
-	2、典型的大数据计算模式有( )。<br>
+	2、典型的大数据计算模式有    ( ABC)。<br>
 	A)批处理计算<br>
 	B)流计算<br>
 	C)图计算<br>
 	D)二叉树计算<br>
-	3、数据可视化工具包括有( )。<br>
+	3、数据可视化工具包括有     (ABCD)。<br>
 	A)地图工具(Modest Maps、Leaflet等 )<br>
 	B) 信息图表工具(Google ChartAPI、 D3、Visual.ly等)<br>
 	C)入门级工具(EXCEL)<br>
 	D)时间线工具(Timetoast、 Xtimeline等)<br>
-	4.归纳起来，典型的NoSQL数据库通常包括有()。<br>
+	4.归纳起来，典型的NoSQL数据库通常包括有     (ABCD)。<br>
 	A) 键值数据库<br>
 	B)列族数据库<br>
 	C)文档数据库<br>
 	D)图形数据库<br>
-	5、Hadoop伪分 布模式启动运行后，具有哪些进程? ()<br>
+	5、Hadoop伪分 布模式启动运行后，具有哪些进程?    (BC)<br>
 	A) JobTracker<br>
 	B) DataNode<br>
 	C) NameNode<br>
@@ -223,26 +234,151 @@
 
 <h2>五、简述题</h2>
 <p>
-	1、简达HDFS中名称节点和数据节点的具体功能，<br>
+	1、简述HDFS中名称节点和数据节点的具体功能，<br>
+	名称节点最主要功能：名称节点记录了每个文件中各个块所在的数据节点的位置信息，数据节点：是HDFS的工作节点，负责数据的存储和读取。<br>
+
 	2、试述Spark应用程序运行基本流程。<br>
+	1.构建Spark Application的运行环境（启动SparkContext），SparkContext向资源管理器（可以是Standalone、Mesos或YARN）注册并申请运行Executor资源；<br>
+
+
+	2.资源管理器分配Executor资源并启动StandaloneExecutorBackend，Executor运行情况将随着心跳发送到资源管理器上；<br>
+
+
+	3.SparkContext构建成DAG图，将DAG图分解成Stage，并把Taskset发送给Task Scheduler。Executor向SparkContext申请Task，Task Scheduler将Task发放给Executor运行同时SparkContext将应用程序代码发放给Executor；<br>
+
+
+	4.Task在Executor上运行，运行完毕释放所有资源。<br>
+
+
 	3、简述在HBase的三层结构中如何访问数据的。<br>
+
 	4、试述NoSQL数据库的四大类型。<br>
+	键值数据库<br>
+	 相关产品：Redis、Riak、SimpleDB、Chordless、Scalaris、Memcached<br>
+
+   应用：内容缓存<br>
+
+   优点：扩展性好、灵活性好、大量写操作时性能高<br>
+
+   缺点：无法存储结构化信息、条件查询效率较低<br>
+
+   使用者：百度云（Redis）、GitHub（Riak）、BestBuy（Riak）、Twitter（Ridis和Memcached）<br>
+<br>
+   列族数据库<br>
+
+   相关产品：BigTable、HBase、Cassandra、HadoopDB、GreenPlum、PNUTS<br>
+
+   应用：分布式数据存储与管理<br>
+
+   优点：查找速度快、可扩展性强、容易进行分布式扩展、复杂性低<br>
+
+   使用者：Ebay（Cassandra）、Instagram（Cassandra）、NASA（Cassandra）、Facebook（HBase）<br>
+<br>
+   文档数据库<br>
+
+   相关产品：MongoDB、CouchDB、ThruDB、CloudKit、Perservere、Jackrabbit<br>
+
+   应用：存储、索引并管理面向文档的数据或者类似的半结构化数据<br>
+
+   优点：性能好、灵活性高、复杂性低、数据结构灵活<br>
+
+   缺点：缺乏统一的查询语言<br>
+
+   使用者：百度云数据库（MongoDB）、SAP（MongoDB）<br><br>
+
+   图形数据库<br>
+
+   相关产品：Neo4J、OrientDB、InfoGrid、GraphDB<br>
+
+   应用：大量复杂、互连接、低结构化的图结构场合，如社交网络、推荐系统等<br>
+
+   优点：灵活性高、支持复杂的图形算法、可用于构建复杂的关系图谱<br>
+
+   缺点：复杂性高、只能支持一定的数据规模<br>
+
+   使用者：Adobe（Neo4J）、Cisco（Neo4J）、T-Mobile（Neo4J）<br><br>
 	5、简述MapReducepShufle的过程和功能。<br>
+	Shuffle过程，也称Copy阶段。reduce task从各个map task上远程拷贝一片数据，并针对某一片数据，如果其大小超过一定的阀值，则写到磁盘上，否则直接放到内存中。<br>
 </p>
 
 <h2>六、程序题</h2>
 <p>
 	1、写出实现如下功能的shell命令格式。  <br>
 	(1)列出hdfs文件系统根目录下的目录和文件<br>
+	hadoop fs -ls  /dir <br>
+	hadoop fs -ls -R /dir     
 	(2)在Ubuntu下查看启动的进程。<br>
+	jps
 	(3)将本地磁盘的文件复制到hdfs文件系统。<br>
+	hadoop fs -put  -f localfile1  localfile2  /user/hadoop/hadoopdir
+
 	(4)将HDFS文件系统的文件复制到本地文件系统。<br>
+	hadoop fs -get  hdfs://host:port/user/hadoop/file localfile
+
 	(5)删除HDFS文件系统中的文件，<br>
+	hadoop fs -rm  -r /aaa/bbb/
+
 	(6)在HDFS文件系统中创建一一个文件夹。<br>
+	hadoop fs -mkdir /test
+
 	(7)在HDFS文件系统中查看文件内容。<br>
+	hadoop fs -cat /test/a.php
 <br>
     2、对于两个输入文件，即文件A和文件B，请编与MapReduce程序，对两个文件进行合并， 并剔除其中重复的内容， 得到一个新的输出文件C<br>
-
+ <xmp>  
+package cn.edu.zucc.mapreduce;
+ 
+import java.io.IOException;
+ 
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+ 
+public class Merge {
+ 
+    public static class Map extends Mapper<Object, Text, Text, Text> {
+        private static Text text = new Text();
+ 
+        @Override
+        public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+            text = value;
+            context.write(text, new Text(""));
+        }
+    }
+ 
+    public static class Reduce extends Reducer<Text, Text, Text, Text> {
+        @Override
+        public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+            context.write(key, new Text(""));
+        }
+    }
+ 
+    public static void main(String[] args) throws Exception {
+        Configuration conf = new Configuration();
+        conf.set("fs.defaultFS", "hdfs://localhost:9000");
+        String[] otherArgs = new String[]{"input", "output"};
+        if (otherArgs.length != 2) {
+            System.err.println("Usage: Merge and duplicate removal <in> <out>");
+            System.exit(2);
+        }
+        Job job = Job.getInstance(conf, "Merge");
+        job.setJarByClass(Merge.class);
+        job.setMapperClass(Map.class);
+        job.setReducerClass(Reduce.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
+        FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
+        FileOutputFormat.setOutputPath(job, new Path(otherArgs[1]));
+        System.exit(job.waitForCompletion(true) ? 0 : 1);
+    }
+ 
+}
+</xmp>
 </p>
 
 
