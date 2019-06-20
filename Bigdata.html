@@ -28,7 +28,7 @@
 </p>
 <h2>
 	大数据对思维方式的影响
-</h2>>
+</h2>
 <p>
 	全球而非抽样<br>
 	效率而非精确<br>
@@ -110,6 +110,68 @@
 	slaves----纯文本---运行DataNode和TaskTracker的机器列表（每行一个）<br>
 	hadoop-metrics.properties---Java属性-----控制metrics和Hadoop上如何发布的属性<br>
 </p>
+<p>
+	输入jsp指令可以查看所有Java进程<br>
+	<xmp>
+		$jsp
+		8675  NodeManager
+		8885  Jps
+		8072  NameNode
+		8412  SecondaryNameNode    
+		8223  DataNode
+		8559  ResourceManager
+	</xmp>
+</p>
+
+<h1>第三章</h1>
+<h2>HDFS简介</h2>
+<p>
+	hdfs支持流数据读取和处理超大规模文件，并能够运行在由廉价的普通机器组成的集群上。<br>
+</p>
+<h3>HDFS目标</h3>
+<p>
+	兼容廉价的硬件设备<br>
+	流数据读写<br>
+	大数据集<br>
+	简单的文件模型<br>
+	强大的跨平台兼容性<br>
+	不适合低延迟数据访问<br>
+	无法高校存储大量小文件<br>
+</p>
+<h3>块</h3>
+<p>
+	默认的一个块大小是64MB<br>
+</p>
+<h3>HDFS采用抽象的块概念可以带来的好处</h3>
+<p>
+	支持大规模文件存储<br>
+	简化系统设计<br>
+	适合数据备份<br>
+</p>
+<h3>名称节点和数据节点</h3>
+<P>
+	名称节点（NodeName）负责管理分布式文件系统的命名空间（Namespace），保存了两个核心的数据结构，即FsImage和EditLog。<br>
+	数据节点（DataNode）是分布式文件系统HDFS的工作节点，负责数据的存储和读取，会根据客户端或者名称节点的调度来进行数据的存储和检索，并且向名称节点定期发送自己所存储的块的列表。<br>
+	每个数据节点中的数据会保存在各自节点的本地Linux文件系统中。<br>
+
+</P>
+<h3>HDFS体系结构</h3>
+<p>
+	HDFS采用了主从（Master/Slave）结构模型，一个HDFS集群包括一个名称节点和若干个数据节点。
+</p>
+<h3>HDFS的存储原理</h3>
+<p>
+	HDFS的存储原理包括数据的荣誉存储、数据存取策略、数据错误与恢复。
+</p>
+<h3>HDFS常用命令</h3>
+<p>
+	<xmp>
+	hadoop fs -ls<path>    显示<path>指定的文件的详细信息。
+	hadoop fs -ls -R<path>    ls命令的地柜版本。
+
+
+	</xmp>
+</p>
 
 
 
@@ -171,7 +233,7 @@
 	B) HDFS<br>
 	C) HBase<br>  
 	D) Zookeeper <br>
-	3、下列哪个NoSQL数据库属于键值类型的数据库     (C)。<br>
+	3、下列哪个NoSQL数据库属于键值类型的数据库     (A)。<br>
 	A) Redis数据库<br>  
 	B) MongoDB<br>
 	C) HBase  <br>
