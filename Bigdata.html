@@ -198,9 +198,93 @@
 	数据维护--------在关系数据库中，更新操作会用最新的当前值去替换记录中原来的旧值，旧值被覆盖后就不会存在。而在HBase中执行更新操作时，并不会删除数据旧的版本，而是生成一个新的版本，旧的版本仍然保留。<br><br>
 	可伸缩性--------关系数据库很难实现横向扩展，纵向扩展的空间也比较有限。HBase则相反。<br><br>
 </p>
+<h3>HBase数据类型</h3>
+<p>
+	HBase是一个洗漱、多维度、排序的映射表，这张表的索引是行键、列族、列限定符和时间戳。<br>
+</p>
+<h3>HBase的功能组件</h3>
+<p>
+	HBase的实现包括3个主要功能组件：库函数，链接到每个客户端；一个Master主服务器；许多个Region服务器。<br>
+	Region服务器负责存储和维护分配给自己的Region，处理来自客户端的读写请求<br>
+	主服务器Master负责管理和维护HBase表的分区信息。
+</p>
+<h3>HBase系统架构</h3>
+<p>
+	HBase的系统架构包括客户端、Zookeeper服务器、Master主服务器、Region服务器。<br>
+</p>
+<h3>HBase常用的Shell命令</h3>
+<p>
+	1. create：创建表<br>
+		创建表t1，列族为f1，,列族版本号为5，命令如下：<br>
+		hbase>create 't1' , {NAME => 'f1',VERSIONS => 5}   <br>
+		创建表t1，3个列族分别为f1、f2、f3，命令如下：  <br>
+		hbase>create 't1', {NAME => 'f1'}, {NAME => 'f3'}   <br>
+		创建表t1，将表依据分割算法HexStringSplit分布在15个Region里，命令如下：  <br>
+		hbase>create 't1','f1',{NUMREDIONS => 15, SPLITALGO => 'HexStringSplit'}   <br>
+	2. put:向表、行、列指定的单元格添加数据
+		向表t1 中行row1和列f1:c1所对应的单元格中添加数据value1，时间戳为142822284898，命令如下： <br>
+		hbase>put 't1','row1','f1:c1','value1',1421822284898  <br>
 
-
-
+	3. get：通过指定表名、行、列、时间戳、时间范围和版本号来获得相应单元格的值<br>
+		获得表t1、行r1、列c1、时间范围为【ts1,ts2】、版本号为4的数据，命令如下：  <br>
+		hbase>get 't1','r1',{COLUMN => 'c1',TIMERANGE => [ts1,ts2],VERSIONS => 4}<br>
+		获得表t1、行r1、列c1和c2上的数据，命令如下：  <br>
+		hbase>get 't1','r1','c1','c2'
+    4. scan:浏览表的相关信息<br>
+    	浏览表“.META”、列info.regioninfo上的数据：  <br>
+    	hbase>sacn '.META.',{COLUMUS => 'info:regioninfo'}  <br>
+    	浏览表t1、列c1、时间范围为[1303668804,1303668904]的数据： <br>
+    	hbase>scan 't1',{COLUMNS => 'c1',TIMERANGE => [1303668804,1303668904]} <br>
+</p>
+<H1>4.8习题</H1>
+<p>
+1.	试述在Hadoop体系架构中HBase与其他组成部分的相互关系。<br>
+	HBase利用Hadoop MapReduce来处理HBase中的海量数据，实现高性能计算；利用Zookeeper作为协同服务，实现稳定服务和失败恢复；使用HDFS作为高可靠的底层存储，利用廉价集群提供海量数据存储能力;  <br>Sqoop为HBase的底层数据导入功能，Pig和Hive为HBase提供了高层语言支持，HBase是BigTable的开源实现。<br>
+2.	请阐述HBase和BigTable的底层技术的对应关系。<br>
+	（1）	文件存储系统：BigTable：GFS；HBase：HDFS。<br>
+	（2）	海量数据处理：BigTable：MapReduce；HBase：Hadoop MapReduce。<br>
+	（3）	协同服务管理：BigTable：Chubby；HBase：Zookeeper。<br>
+3.	请阐述HBase和传统关系数据库的区别。<br>
+	区别	---------传统关系数据库 --------------------------------- HBase<br>
+	数据类型------关系模型---------------------------------------数据模型<br>
+	数据操作------插入、删除、更新、查询、多表连接	 --------------------- 插入、查询、删除、清空，无法实现表与表之间关联 <br>
+	存储模式-----基于行模式存储，元组或行会被连续地存储在磁盘中----- 基于列存储，每个列族都由几个文件保存，不同列族的文件是分离的<br>
+	数据索引-----针对不同列构建复杂的多个索引--------------------- 只有一个行键索引<br>
+	数据维护----- 用最新的当前值去替换记录中原来的旧值------------- 更新操作不会删除数据旧的版本，而是生成一个新的版本<br>
+	可伸缩性-----很难实现横向扩展，纵向扩展的空间也比较有限--------- 轻易地通过在集群中增加或者减少硬件数量来实现性能的伸缩。<br>
+4.	HBase有哪些类型的访问接口？<br>
+HBase提供了Native Java API，HBase Shell，Thrift Gateway， REST GateWay ，Pig，Hive等访问接口。<br>
+5. 请以实例说明HBase数据类型。<br>
+<img src="bigdata1.png"> <br>
+6.	分别解释HBase中行键、列键和时间戳的概念。<br>
+	(1)行键是唯一的,在一个表里只出现一次,否则就是在更新同一行,行键可以是任意的字节数组。<br>
+    (2)列族需要在创建表的时候就定义好,数量也不宜过多。列族名必须由可打印字符组成,创建表的时候不需要定义好列。<br>
+    (3)时间戳,默认由系统指定,用户也可以显示设置。使用不同的时间戳来区分不同的版本。<br>
+7.	请举个实例来阐述HBase的概念图和物理视图的不同。<br>
+<img src="bigdata2.png"> <br>
+在HBase的概念视图中，一个表可以视为一个稀疏、多维的映射关系。 在物理视图中，一个表会按照属于同一列族的数据保存在一起<br>
+8.	试述HBase各功能组件及其作用。<br>
+(1)库函数:链接到每个客户端。<br>
+(2)一个Master主服务器:主服务器Master主要负责表和Region的管理工作。<br>
+(3)许多个Region服务器:Region服务器是HBase中最核心的模块,负责维护分配给自己的Region,并响应用户的读写请求。<br>
+9.	请阐述HBase的数据分区机制。<br>
+HBase采用分区存储,一个大的表会被分拆许多个Region,这些Region 会被分发到不同的服务器上实现分布式存储。<br>
+10.	HBase中的分区是如何定位的？<br>
+通过构建的映射表的每个条目包含两项内容,一个是Regionde 标识符,另一个是Region服务器标识,这个条目就标识Region和Region服务器之间的对应关系,从而就可以知道某个Region被保存在哪个Region服务器中。<br>
+11.	试述HBase的三层结构中各层次的名称和作用。<br>
+<img src="bigdata3.png"> <br>
+12.	请阐述在HBase三层结构下，客户端是如何访问到数据的。<br>
+首先访问Zookeeper,获取-ROOT表的位置信息,然后访问-Root-表,获得.MATA.表的信息,接着访问.MATA.表,找到所需的Region具体位于哪个Region服务器,最后才会到该Region服务器读取数据。<br>
+13.	试述HBase系统基本架构以及每个组成部分的作用。<br>
+(1)客户端<br>
+客户端包含访问HBase的接口,同时在缓存中维护着已经访问过的Region 位置信息,用来加快后续数据访问过程。<br>
+(2)Zookeeper服务器<br>
+Zookeeper可以帮助选举出一个Master作为集群的总管,并保证在任何时刻总有唯一一个Master在运行,这就避免了Master的“单点失效”问题。<br>
+(3)Master<br>
+主服务器Master主要负责表和Region的管理工作:管理用户对表的增加、删除、修改、查询等操作;实现不同Region服务器之间的负载均衡;在Region 分裂或合并后,负责重新调整Region的分布;对发生故障失效的Region服务器上的Region进行迁移。<br>
+(4)Region服务器<br>
+Region服务器是HBase中最核心的模块,负责维护分配给自己的Region,并响应用户的读写请求。<br>
+</p>
 
 
 <h1>练习题</h1>
