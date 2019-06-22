@@ -369,10 +369,39 @@ Region服务器是HBase中最核心的模块,负责维护分配给自己的Regio
 </p>
 <h2>Spark与Hadoop的对比</h2>
 <img src="bigdata8.png"><br>
+<h3>Spark的几个主要概念：RDD、DAG、阶段、分区、窄依赖、宽依赖</h3>
+<P>
+	①RDD：是弹性分布式数据集（Resilient Distributed Dataset）的英文缩写，是分布式内存的一个抽象概念，提供了一种高度受限的共享内存模型。<br>
+	②DAG：是Directed Acyclic Graph（有向无环图）的英文缩写，反映RDD之间的依赖关系。<br>
+	③阶段：是作业的基本调度单位，一个作业会分为多组任务，每组任务被称为“阶段”，或者也被称为“任务集”。<br>
+	④分区：一个RDD就是一个分布式对象集合，本质上是一个只读的分区记录集合，每个RDD可以分成多个分区，每个分区就是一个数据集片段。<br>
+	⑤窄依赖：父RDD的一个分区只被一个子RDD的一个分区所使用就是窄依赖。<br>
 
+</P>
+<h2>Spark运行基本流程</h2>
+<p>
+	①构建Spark Application的运行环境（启动SparkContext），SparkContext向资源管理器（可以是Standalone、Mesos或YARN）注册并申请运行Executor资源； <br>
+	②资源管理器分配Executor资源并启动StandaloneExecutorBackend，Executor运行情况将随着心跳发送到资源管理器上； <br>
+	③SparkContext构建成DAG图，将DAG图分解成Stage，并把Taskset发送给Task Scheduler。Executor向SparkContext申请Task，Task Scheduler将Task发放给Executor运行同时SparkContext将应用程序代码发放给Executor。 <br>
+	④Task在Executor上运行，运行完毕释放所有资源。<br>
 
+</p>
+<h3>RDD特性</h3>
+<p>
+	①高效的容错性；<br>
+	②中间结果持久化到内存；<br>
+	③存放的数据可以是Java对象，避免了不必要的对象序列化和反序列化开销。<br>
 
+</p>
+<h3>Spark三种部署方式</h3>
+<p>
+	①Standalone模式；<br>
+	②Spark on Mesos模式；<br>
+	③Spark on YARN模式<br>
 
+</p>
+<h1>第十章 流计算</h1>
+<img src="bigdata9.png"><br>
 
 <h1>练习题</h1>
 <h2>一、名词解释</h2>
